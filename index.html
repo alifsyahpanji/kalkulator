@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alifsyah Panji</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+
+        <style>
+            body{
+                background-image: linear-gradient(to bottom right, rgb(16, 203, 236), rgb(255, 0, 200));
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+            }
+
+            .card {
+                margin-top: 25px;
+            }
+
+            .card-header {
+                background-color: rgb(255, 0, 200);
+                color: white;
+            }
+
+            select {
+                margin-bottom: 10px;
+            }
+
+            button {
+                margin-bottom: 10px;
+                margin-right: 10px;
+            }
+        </style>
+</head>
+<body>
+
+    <script>
+        /* Fungsi Kalkulator */
+        function kalkulator(){
+        
+        /* Mengambil data dari form input */
+
+        var a = document.getElementById("operand1").value;
+        var b = document.getElementById("operand2").value;
+        var pil = document.getElementById("opt").value;
+        
+        /* Mengubah dari String ke Int */
+        x = parseInt(a);
+        y = parseInt(b);
+
+
+
+        /* Memberi batas maksimal 1000000 pada operand */
+        if(x >= 1000000 || y >= 1000000){
+        
+        /* Jika True maka akan muncul pesan alert */
+        var alert = '<div class="alert alert-danger" role="alert" id="alert">Maksimal Operand adalah 1000000</div>';
+        document.getElementById("alert").innerHTML = alert; 
+
+ 
+        }else{
+           
+         /* Mengecek option input dan memulai kalkulasi */
+        if (pil == "tambah") {
+        var z = x + y;
+         }else if (pil == "kurang") {
+        var z = x - y;
+         } else if (pil == "kali") {
+        var z = x * y;
+         } else if (pil == "bagi") {
+        var z = x / y;
+         }
+
+         /* Output data hasil kalkulasi */
+        
+        document.getElementById("hasil").value = z;
+        document.getElementById("operand1").value = "";
+        document.getElementById("operand2").value = "";
+        var alert = "";
+        document.getElementById("alert").innerHTML = alert;
+        }
+    }
+
+        /* Fungsi Reset */
+        function resetForm(){
+        document.getElementById("myForm").reset();
+        var alert = "";
+        document.getElementById("alert").innerHTML = alert;
+        }
+        
+        
+        </script>
+
+    <!--Container Start-->
+    <div class="container-fluid">
+
+        <!--Card Start-->
+        <div class="card">
+            <h5 class="card-header">Kalkulator</h5>
+            
+            <!--Card Body Start-->
+            <div class="card-body">
+
+                
+                <div id="alert"></div>
+
+
+                <!--Form Start-->
+                <form id="myForm" action="">
+                <div class="mb-3">
+                    <label for="operand1" class="form-label">Operand 1:</label>
+                    <input type="number" class="form-control" id="operand1" name="x">
+                  </div>
+
+                  <select class="form-select" aria-label="Default select example" id="opt">
+                    
+                    <option value="tambah">+ (Tambah)</option>
+                    <option value="kurang">- (Kurang)</option>
+                    <option value="kali">* (Kali)</option>
+                    <option value="bagi">/ (Bagi)</option>
+                  </select>
+
+                  <div class="mb-3">
+                    <label for="operand2" class="form-label">Operand 2:</label>
+                    <input type="number" class="form-control" id="operand2" name="y">
+                  </div>
+
+                  <button type="button" class="btn btn-primary" onclick="kalkulator()">Hitung</button>
+                  <button type="button" class="btn btn-danger" onclick="resetForm()">Clear</button>
+
+                  <div class="mb-3">
+                    <label class="form-label">Hasil:</label>
+                  <input class="form-control" type="text" id="hasil" value="" aria-label="Disabled input example" disabled readonly>
+                    </div>
+
+                    </form>
+                    <!--Form End-->
+                  
+            </div>
+            <!--Card Body End-->
+
+
+            </div>
+            <!--Card End-->
+          
+        
+        
+      
+    </div>
+    <!--Container End-->
+      
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
